@@ -1,0 +1,68 @@
+.rankTableWrapper {
+  width: 100%;
+  min-height: 380px;
+  margin-right: 0;
+  position: relative;
+  .topTitle {
+    display: flex;
+    margin-bottom: 8px;
+    .tableName {
+      font-size: 14px;
+      color: #afb2b1;
+      font-weight: bolder;
+      width: 100%;
+      line-height: 32px;
+    }
+    :global {
+      .ant-btn-primary {
+        // background: transparent;
+        // border: none;
+        // color: #afb2b1;
+      }
+    }
+  }
+  .tableHead {
+    display: flex;
+    font-size: 16px;
+    color: #147DFF;
+    position: relative;
+    margin-bottom: 8px;
+    .headRank {
+      width: 35px;
+      margin-right: 15px;
+    }
+    .headLast {
+      position: absolute;
+      right: 0;
+    }
+  }
+  .noRowsWrapper {
+    position: absolute;
+    top: 28px;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: Center;
+    color: #ccc;
+  }
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+@media screen and (max-width: 1307px) {
+  .rankTableWrapper {
+    // width: 386px;
+  }
+}
+
+@media screen and (min-width: 1308px) {
+  .rankTableWrapper {
+    // width: 32%;
+  }
+}

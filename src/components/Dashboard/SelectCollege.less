@@ -1,0 +1,35 @@
+
+.selectWrapper {
+  display: flex;
+  color: #fff;
+  font-size: 12px;
+  margin: 7.5px 0;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  .selectBox {
+    display: flex;
+  }
+  .interval {
+    margin: 0 8px;
+  }
+  .backBtn {
+    border: none;
+    background: none;
+    outline: none;
+    color: #fff;
+  }
+  :global {
+    .ant-select {
+      border: 0;
+      .ant-select-selection {
+        background: transparent;
+        border: none;
+        // color: #fff;
+      }
+      span {
+        color: #fff;
+      }
+    }
+  }
+}

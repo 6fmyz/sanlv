@@ -1,0 +1,56 @@
+  .circle {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    margin-left: -100px;
+    margin-top: -100px;
+    .circle_left, .circle_right {
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      top: 0;left: 0;
+    }
+    .left, .right {
+      display: block;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: rotate(0deg);
+    }
+    .circle_right, .right {
+      clip:rect(0,auto,auto,100px);
+    }
+    .circle_left, .left {
+      clip:rect(0,100px,auto,0);
+    }
+    .mask {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      left: 25px;
+      top: 25px;
+      background: #1A1A1A;
+      position: absolute;
+      text-align: center;
+      font-size: 16px;
+      .word {
+        margin-top: 20px;
+      }
+      .num {
+        margin-top: 5px;
+        font-size: 46px;
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        .unit {
+          font-size: 14px;
+        }
+      }
+    }
+  }

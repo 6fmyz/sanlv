@@ -1,0 +1,219 @@
+.historyDataDetailedMain {
+  .pageTitle {
+    font-size: 20px;
+    color: #fff;
+    text-shadow: 0 0 30px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    >button:nth-of-type(1) {
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 30px;
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      color: #f5f5f5;
+      outline: none;
+    }
+    >button:nth-of-type(2) {
+      position: absolute;
+      right: 75px;
+      top: 8px;
+      border: none;
+    }
+    >button:nth-of-type(3) {
+      position: absolute;
+      right: 0;
+      top: 8px;
+      border: none;
+    }
+    >a {
+      color: rgb(14, 142, 233);
+      cursor: pointer;
+    }
+  }
+  .detailedWrapper {
+    // padding: 18px;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    // background: rgba(62, 128, 245, 0.06);
+    // border: 1px solid rgba(62, 128, 245, 0.1);
+    // box-shadow: 0 0 20px 0 rgba(62, 128, 245, 0.5);
+    margin-bottom: 24px;
+    position: relative;
+    display: flex;
+    .leftTab {
+      // background: rgba(193, 172, 172, 0.2);
+      background: hsla(0, 0%, 100%, .05);
+      margin-right: 20px;
+      width: 65%;
+      align-items: center;
+      display: flex;
+      padding-top: 45px;
+      .imgTitle {
+        height: 45px;
+        position: absolute;
+        top: 0px;
+        left: 12px;
+        .unit {
+          color: #de0d13;
+          font-size: 14px;
+          font-weight: bolder;
+          margin-right: 4px;
+        }
+        .num {
+          font-size: 30px;
+          color: #eab60bf7;
+        }
+      }
+      > span {
+        position: absolute;
+        top: 0px;
+        right: 12px;
+        line-height: 45px;
+      }
+      img {
+        width: 100%;
+        height: auto;
+      }
+      .classTimeWrapper {
+        padding: 10px 12px;
+        width: 170px;
+        color: #d9d9d9;
+        text-shadow: 0 0 2px;
+        background: none;
+        border: none;
+        height: auto;
+        overflow: hidden;
+        border-radius: 0;
+        display: block;
+        .teacherName {
+          font-size: 14px;
+          display: flex;
+          align-items: flex-end;
+          overflow: hidden;
+          .unit {
+            font-size: 10px;
+            color: #888;
+          }
+        }
+        .time {
+          text-align: left;
+          font-size: 14px;
+        }
+      }
+      &.active {
+        background: #15171F;
+      }
+    }
+    .rightChart {
+      background: hsla(0, 0%, 100%, .05);
+      width: e('calc(35% - 20px)');
+      .numberWrapper {
+        line-height: 50px;
+        .num {
+          font-size: 30px;
+          color: #eab60bf7;
+        }
+      }
+      .chartWrapper {
+        margin-bottom: 40px;
+      }
+      .blockBoxWrapper {
+        .box {
+          display: flex;
+          align-items: center;
+          .contentBox {
+            outline: 0;
+            cursor: pointer;
+            border: 0;
+            border-radius: 5px;
+            padding: 0 5px;
+            background: transparent;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            .studentsNum {
+              font-size: 30px;
+              color: #eab60bf7;
+            }
+            .time {
+              font-size: 12px;
+              color: #fff;
+            }
+          }
+          .active {
+            box-shadow: 0 0 10px #fff;
+          }
+          .flex {
+            display: flex;
+            align-items: center;
+          }
+          .line {
+            width: 1px;
+            height: 30px;
+            background: #fff;
+            margin: 0 8px;
+          }
+          .unitText {
+            font-size: 12px;
+            color: #eab60bf7;
+            margin-left: 4px;
+          }
+          .valText {
+            // margin-right: 10px;
+          }
+          .lowColor {
+            background: linear-gradient(to right, red , #C12E32);
+            .line {
+              background: red;
+            }
+            margin-right: 15px;
+            &:last-child {
+              margin: 0;
+            }
+          }
+          .peakColor {
+            // background: linear-gradient(to right, #C12E32 , #86070a);
+            background: linear-gradient(to right, #54c341, #2B821C);
+            .line {
+              background: #54c341;
+            }
+          }
+          .countPeakColor {
+            // background: linear-gradient(to right, #f1ba06 , #c19504);
+            background: linear-gradient(to right, #1890ff, #0a66bb);
+            .line {
+              background: #1890ff;
+            }
+          }
+        }
+        .boxWrapper {
+          display: flex;
+          align-items: center;
+        }
+        .boxMargin {
+          margin: 0 15px;
+        }
+        .margin {
+          margin: 10px 0;
+        }
+      }
+    }
+  }
+  .loadingWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.5);
+    z-index: 1;
+  }
+}

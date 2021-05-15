@@ -1,0 +1,43 @@
+.historyDataQueryMain {
+  .topWrapper {
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
+    margin: 10px 0;
+    .pageTitle {
+      font-size: 20px;
+      color: #fff;
+      text-shadow: 0 0 30px;
+      text-align: center;
+      width: 100%;
+      text-shadow: 0 0 30px;
+    }
+  }
+  .historyDataWrapper {
+    background: #fff;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.16);
+    padding: 18px;
+    .queryWrapper {
+      display: flex;
+      justify-content: flex-start;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #eee;
+      .queryBox {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-right: 20px;
+      }
+    }
+    .dataTable {
+      :global {
+        .ant-table-thead > tr > th {
+          text-align: center;
+        }
+      }
+      .textAlign {
+        text-align: left;
+      }
+    }
+  }
+}

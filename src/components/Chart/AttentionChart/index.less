@@ -1,0 +1,70 @@
+.numberViewWrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 4px;
+  padding: 0px 5px!important;
+  margin-bottom: 10px;
+}
+.btnWrapper {
+  height: 80px;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+.notClickBtnWrapper {
+  height: 80px;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sliderWrapper {
+  margin: 0 50px 15px 38px;
+  position: relative;
+  .sliderLines {
+    position: absolute;
+    bottom: 7px;
+  }
+  :global {
+    .ant-slider {
+      margin-top: 0px;
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+    .ant-slider-rail {
+      background-color: #888888;
+      height: 12px;
+    }
+    .ant-slider-track {
+      background-color: #888888;
+      height: 12px;
+    }
+    .ant-slider:hover {
+      .ant-slider-rail {
+        background-color: #888888;
+      }
+      .ant-slider-track {
+        background-color: #888888;
+      }
+    }
+    .ant-slider-handle {
+      right: auto !important;
+      transform: translateX(-50%) !important;
+    }
+    .ant-slider-handle:focus{
+      box-shadow: none;
+    }
+  }
+}

@@ -1,0 +1,110 @@
+.wrapper {
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  .tableHead {
+    font-size: 14px;
+    color: #222;
+    width: 100%;
+    display: flex;
+    >div {
+      padding: 16px;
+      border-bottom: 1px solid #e9eaec;
+      border-right: 1px solid #e9eaec;
+      width: 20%;
+      text-align: center;
+    }
+  }
+  .tableBody {
+    width: 100%;
+    text-align: center;
+    >button {
+      width: 100%;
+      display: flex;
+      border: none;
+      margin: 0;
+      background-color: transparent;
+      outline: none;
+      padding: 0;
+      // &:nth-of-type(2n-1) {
+      //   background-color: rgba(10, 0, 0, 0.2);
+      // }
+      // &:hover {
+      //   background-color: #ebf7ff;
+      // }
+      .courseInfoRow {
+        width: 100%;
+        display: flex;
+        .courseInfoCell {
+          width: 20%;
+          text-align: left;
+          >div {
+            width: 100%;
+          }
+          .infoOrgName {
+            font-size: 12px;
+            color: #ccc;
+          }
+        }
+        >div {
+          border-right: 1px solid #e9eaec;
+          border-bottom: 1px solid #e9eaec;
+          width: 20%;
+          padding: 0 16px;
+          text-align: left;
+          display: flex;
+          align-items: center;
+          line-height: 20px;
+          .rank {
+            color: #000;
+            text-align: center;
+          }
+        }
+        .textAlign {
+          text-align: left;
+        }
+        .numTextAlign {
+          text-align: right;
+        }
+      }
+      .row {
+        width: 100%;
+        display: flex;
+        >div {
+          border-right: 1px solid #e9eaec;
+          border-bottom: 1px solid #e9eaec;
+          width: 20%;
+          padding: 0 16px;
+          text-align: left;
+          line-height: 48px;
+          height: 48px;
+          .rank {
+            color: #000;
+            text-align: center;
+          }
+        }
+        .textAlign {
+          text-align: left;
+        }
+        .numTextAlign {
+          text-align: right;
+        }
+      }
+    }
+    .dataEmpty {
+      position: relative;
+      z-index: 1;
+      padding: 16px 16px;
+      color: rgba(0, 0, 0, 0.45);
+      font-size: 14px;
+      text-align: center;
+      background: #fff;
+      border-bottom: 1px solid #e8e8e8;
+      border-radius: 0 0 4px 4px;
+      > i {
+        display: block;
+        font-size: 60px;
+        color: #e8e8e8;
+      }
+    }
+  }
+}
