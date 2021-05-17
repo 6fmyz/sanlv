@@ -130,13 +130,13 @@ class ClassroomHistoryClassroomDetail extends React.Component {
                 border: 'none',
                 background: 'none',
                 outline: 'none',
-                cursor: 'pointer',
+                // cursor: 'pointer',
                 padding: 0,
               }}
-              onClick={() => {
-                this.goClassroomDetail = true
-                this.props.dispatch(push(`/v2-history-data-query?teacherId=${record.teacherName}`))
-              }}
+              // onClick={() => {
+              //   this.goClassroomDetail = true
+              //   this.props.dispatch(push(`/v2-history-data-query?teacherId=${record.teacherName}`))
+              // }}
             >{`${record.teacherName ? record.teacherName : ''}${record.employeeNumber ? `(${record.employeeNumber})` : ''}`}</button>
           )
         }
