@@ -8,9 +8,9 @@ const selectors = createSelector(
   (detailed, app) => {
     return ({
       ...detailed,
-      collegeInfo: app.user ? app.user.userOrgList : null,
-      userDepartmentId: app.user.departmentId ? app.user.departmentId : null,
-      fstOrgId: app.user.departmentId ? app.user.departmentId : null,
+      collegeInfo: null,// app.user ? app.user.userOrgList : null,
+      userDepartmentId: null,//app.user.departmentId ? app.user.departmentId : null,
+      fstOrgId: null,//app.user.departmentId ? app.user.departmentId : null,
     })
   }
 )

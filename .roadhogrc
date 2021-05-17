@@ -22,7 +22,7 @@
   },
   "proxy": {
     "/api": {
-      "target": "http://47.101.133.101:7777",
+      "target": "http://sanlv.mamasousuo.com",
       "changeOrigin": true,
       "pathRewrite": { "^/api" : "/api" }
     }
