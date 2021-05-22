@@ -462,7 +462,7 @@ class BasicLayout extends React.PureComponent {
                   {
                     this.getRolePermissionRoutes()
                   }
-                  <Redirect exact from="/" to="/v2-classroom-history-data-query" />
+                  <Redirect exact from="/" to="/v2-course-data-analysis/" />
                   {/* <Route component={NotFound} /> */}
                 </Switch>
               </div>
