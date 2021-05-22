@@ -13,6 +13,9 @@ const cssStyle = {
   }
 }
 class Navigation extends React.Component {
+
+  
+
   render() {
     const {
       menu,
@@ -27,29 +30,33 @@ class Navigation extends React.Component {
       role,
       toFullScreen,
       isAllscreen,
+      currentKey,
+      handleClickNavMenu,
     } = this.props
 
-    const menusProps = {
-      menu,
-      siderFold: false,
-      darkTheme,
-      isNavbar,
-      location,
-      navOpenKeys,
-      changeOpenKeys,
-      inlineCollapsed: collapsed,
-      toggleCollapsed,
-      handleClickNavMenu: switchMenuPopover,
-      role,
-      toFullScreen,
-    }
+    
+
+    // const menusProps = {
+    //   menu,
+    //   siderFold: false,
+    //   darkTheme,
+    //   isNavbar,
+    //   location,
+    //   navOpenKeys,
+    //   changeOpenKeys,
+    //   inlineCollapsed: collapsed,
+    //   toggleCollapsed,
+    //   handleClickNavMenu: ,//: switchMenuPopover,
+    //   role,
+    //   toFullScreen,
+    // }
     // , height: 'calc(100% - 96px)'
     return (
       <div id="navigation" className={clsx(styles.navigation, isAllscreen && styles.noHeaderstyle)}>
         {
-          <Menus {...menusProps} />
+          <Menus currentKey={currentKey} handleClickNavMenu={handleClickNavMenu} />
         }
-        {
+        {/* {
           <Button style={collapsed ? cssStyle.narrow : cssStyle.width} onClick={toggleCollapsed} >
             {
             // <span>{collapsed ? '展开' : '收起'}</span>
@@ -57,7 +64,7 @@ class Navigation extends React.Component {
               <Icon type={collapsed ? 'double-right' : 'double-left'} />
             }
           </Button>
-        }
+        } */}
       </div>
     )
   }
@@ -76,5 +83,7 @@ Navigation.propTypes = {
   role: PropTypes.number,
   toFullScreen: PropTypes.func,
   isAllscreen: PropTypes.bool,
+  currentKey: PropTypes.string,
+  handleClickNavMenu: PropTypes.func,
 }
 export default Navigation

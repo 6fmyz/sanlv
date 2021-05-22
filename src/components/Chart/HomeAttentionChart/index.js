@@ -47,7 +47,7 @@ class AttentionChart extends Component {
         trigger: 'axis'
       },
       legend: {
-        data: ['抬头率/秒', '抬头率/分', '点头频次']
+        data: ['抬头率/秒', '抬头率/分', '活跃指数']
       },
       calculable: true,
       grid: {
@@ -129,7 +129,7 @@ class AttentionChart extends Component {
         },
         {
           yAxisIndex: 1,
-          name: '点头频次',
+          name: '活跃指数',
           type: 'bar',
           barMaxWidth: 5,
           symbol: 'none',

@@ -53,6 +53,10 @@ class courseDataAnalysis extends React.Component {
     this.initParams()
   }
 
+  // componentDidMount() {
+  //   this.props.dispatch({ type: 'v2_courseDataAnalysis/changeStartDate', startDate: '2020-05-18' })
+  // }
+
   componentWillReceiveProps(nextProps) {
     if (this.props.currentPeriod !== nextProps.currentPeriod) {
       this.getQueryDate(nextProps.currentPeriod)
@@ -99,10 +103,10 @@ class courseDataAnalysis extends React.Component {
     if (!searchParams.back || notClearFilterParamsArr.indexOf(searchParams.back) === -1) {
       this.props.dispatch({ type: 'v2_courseDataAnalysis/initFilterParams' })
       this.queryList({
-        startDate: moment().format('YYYY-MM-DD'),
-        endDate: moment().format('YYYY-MM-DD'),
+        startDate: '2020-05-18', 
+        endDate: '2021-05-18', 
         pageNum: 1,
-        pageSize: 20,
+        pageSize: 5,
         // teacherId: null,
         // courseId: null,
         fstOrgId: null,
@@ -119,7 +123,7 @@ class courseDataAnalysis extends React.Component {
       startDate: props.startDate,
       endDate: props.endDate,
       page: props.pageNum,
-      pageSize: props.pageSize,
+      pageSize: 5,
       // teacherId: props.teacherId,
       // courseId: props.courseId,
     }
@@ -165,6 +169,7 @@ class courseDataAnalysis extends React.Component {
   }
   // 时间段选中变化
   handelRadioGroupChange = (dieff) => {
+    // console.log(dieff)
     this.props.dispatch({ type: 'v2_courseDataAnalysis/changeCurrentPeriod', dieff: dieff })
   }
 
@@ -400,9 +405,16 @@ class courseDataAnalysis extends React.Component {
     const bordered = true
     return (
       <div className={styles.courseDataAnalysisPage}>
+        {/* <Button
+            onClick={() => {
+              this.props.history.push('/')
+            }}
+          >返回主菜单</Button> */}
         <div className={styles.pageTop}>
-          <SelectCollege {...selectCollege} />
+          {/* <SelectCollege {...selectCollege} /> */}
           <div className={styles.pageTitle}>课堂数据分析</div>
+          <Button onClick={()=>this.props.history.push(`/v2-time-board`)} style={{position: 'absolute', right: '2vw', top: '1vh'}}>直播</Button>
+          <Button onClick={()=>this.props.history.push(`/v2-classroom-history-data-query`)} style={{position: 'absolute', right: '8vw', top: '1vh'}}>所有教室</Button>
         </div>
         <div className={styles.contentWrapper}>
           <div className={styles.topWrapper}>
@@ -446,7 +458,7 @@ class courseDataAnalysis extends React.Component {
                 </Select>
               </div>
             </div> */}
-            <div className={[`${styles.pickerWrapper} ${styles.queryConditions}`]}>
+            {/* <div className={[`${styles.pickerWrapper} ${styles.queryConditions}`]}>
               <div className={styles.word}>时间：</div>
               <div className={styles.timeBox}>
                 <RadioGroup
@@ -463,7 +475,7 @@ class courseDataAnalysis extends React.Component {
                   currentPeriod === -1 && <DatePickerPlugin {...DatePickerDate} />
                 }
               </div>
-            </div>
+            </div> */}
             <div className={styles.queryConditions}>
               <div className={styles.word}>内容：</div>
               <CheckboxGroup
@@ -484,6 +496,7 @@ class courseDataAnalysis extends React.Component {
                   loading={loading}
                   dataSource={tableDate}
                   pagination={false}
+                  className={styles.table}
                 />
                 {
                   totalDataNum > 0 &&

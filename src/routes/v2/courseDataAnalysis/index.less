@@ -1,7 +1,7 @@
 .courseDataAnalysisPage {
   .pageTop {
     position: relative;
-    height: 48px;
+    height: 6vh;
   }
   .pageTitle {
     font-size: 20px;
@@ -94,6 +94,18 @@
       }
       .numTextAlign {
         text-align: right;
+      }
+
+      .table {
+        // height: e("calc(92vh - 198px)");
+        overflow: scroll;
+        :global {
+          .ant-table-row{
+            height: 11vh;
+          }
+        }
+
+        
       }
     }
   }

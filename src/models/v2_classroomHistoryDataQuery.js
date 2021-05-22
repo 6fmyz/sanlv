@@ -47,7 +47,14 @@ export default {
     // 查询列表数据
     * queryClassroomList(action, { call, put }) {
       const res = yield call(queryClassroomList, parse(action.params))
-      yield put({ type: 'queryClassroomListSuccess', data: res.data })
+      console.log(222, res.data)
+      let data = res.data.map(item=>{
+        if(!item.classroomName.includes('教室')){
+          return {...item, classroomName: item.classroomName+'教室'}
+        }
+        return item
+      })
+      yield put({ type: 'queryClassroomListSuccess', data: data })
     },
   },
   reducers: {

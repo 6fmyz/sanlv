@@ -204,6 +204,7 @@
       padding: 48px 24px 0 224px;
       animation: width 0.2s;
       overflow-x: hidden;
+
     }
     .insideAllScreen {
       padding: 0 0 0 80px;
@@ -242,7 +243,14 @@
       to { margin-left: 200px }
     }
     .marginNarrow {
-      padding: 48px 24px 0 104px;
+      // position: absolute;
+      // top: 8vh;
+      // bottom: 0;
+      // left: 18vw;
+      // right: 5px;
+      background-color: #efeef0;
+      // border: 1px solid rgb(167, 164, 164);
+      // padding: 50px 24px 50px 200px;
       animation: narrow 0.2s;
       overflow-x: hidden;
     }
@@ -252,8 +260,14 @@
       to { margin-left: 80px }
     }
     .content {
-      min-height: e("calc(100vh - 96px)");
-      position: relative;
+      position: absolute;
+      top: 8vh;
+      bottom: 0;
+      left: 14vw;
+      right: 5px;
+      margin: 10px 5px 0 10px;
+      min-height: 92vh;
+      // position: relative;
     }
     .allScreenContent {
       min-height: e("calc(100vh)");

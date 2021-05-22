@@ -123,22 +123,23 @@ class ClassroomHistoryClassroomDetail extends React.Component {
         key: 'teacherName',
         className: `${styles.textAlign}`,
         render: (text, record) => {
-          return (
-            <button
-              style={{
-                color: '#0e8ee9',
-                border: 'none',
-                background: 'none',
-                outline: 'none',
-                // cursor: 'pointer',
-                padding: 0,
-              }}
-              // onClick={() => {
-              //   this.goClassroomDetail = true
-              //   this.props.dispatch(push(`/v2-history-data-query?teacherId=${record.teacherName}`))
-              // }}
-            >{`${record.teacherName ? record.teacherName : ''}${record.employeeNumber ? `(${record.employeeNumber})` : ''}`}</button>
-          )
+          return `${record.teacherName ? record.teacherName : ''}${record.employeeNumber ? `(${record.employeeNumber})` : ''}`
+          // (
+          //   <button
+          //     style={{
+          //       color: '#0e8ee9',
+          //       border: 'none',
+          //       background: 'none',
+          //       outline: 'none',
+          //       // cursor: 'pointer',
+          //       padding: 0,
+          //     }}
+          //     // onClick={() => {
+          //     //   this.goClassroomDetail = true
+          //     //   this.props.dispatch(push(`/v2-history-data-query?teacherId=${record.teacherName}`))
+          //     // }}
+          //   >{`${record.teacherName ? record.teacherName : ''}${record.employeeNumber ? `(${record.employeeNumber})` : ''}`}</button>
+          // )
         }
       },
       {
@@ -212,6 +213,7 @@ class ClassroomHistoryClassroomDetail extends React.Component {
       },
       {
         title: '操作',
+        className: `${styles.setWidth}`,
         dataIndex: '',
         key: 'x',
         render: (text, record) => {
@@ -219,12 +221,15 @@ class ClassroomHistoryClassroomDetail extends React.Component {
             <div>
               <button
                 style={{
-                  color: '#0e8ee9',
+                  color: 'white',
                   border: 'none',
-                  background: 'none',
+                  backgroundColor: '#409eff',
                   outline: 'none',
                   cursor: 'pointer',
                   padding: 0,
+                  width: '50px',
+                  height: '30px',
+                  
                 }}
                 onClick={() => {
                   // this.props.dispatch({ type: 'v2_classroomHistoryDataQuery/setTitleInfo', data: { ...record, type: 2 } })
@@ -236,13 +241,15 @@ class ClassroomHistoryClassroomDetail extends React.Component {
               </button>
               <button
                 style={{
-                  color: 'red',
+                  color: 'white',
                   border: 'none',
-                  background: 'none',
+                  backgroundColor: '#ff5757',
                   outline: 'none',
                   cursor: 'pointer',
                   padding: 0,
                   marginLeft: '10px',
+                  width: '50px',
+                  height: '30px',
                 }}
                 disabled={!accountRoleRules.del}
                 onClick={() => {
@@ -264,17 +271,18 @@ class ClassroomHistoryClassroomDetail extends React.Component {
     return (
       <div>
         <div className={styles.top}>
-          <Button
+          {/* <Button
             onClick={() => {
               this.props.dispatch(push(`/v2-classroom-history-data-query?from=${pathname}${search}`))
             }}
-          >返回</Button>
+          >返回</Button> */}
+           <Button icon="left-circle" onClick={()=>this.props.history.push(`/v2-classroom-history-data-query`)} />
           {/* <div className={styles.title}>{`${isShowClassMsg ? `(${campus}-${classroomBuilding}-${classroom})` : ''}教室历史课程数据查询`}</div> */}
           <div className={styles.title}>{`${isShowClassMsg ? `(${classroom})` : ''}教室历史课程数据查询`}</div>
         </div>
         <div className={styles.classroomDetailWrapper}>
 
-          <Table dataSource={dataSource} bordered={true} columns={columns} pagination={false} loading={loading}/>
+          <Table className={styles.table} dataSource={dataSource} bordered={true} columns={columns} pagination={false} loading={loading}/>
           {
             this.props.totalNum > 0 &&
               <MyPagination

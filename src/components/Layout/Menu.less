@@ -1,0 +1,32 @@
+.menu {
+    background-color: #108683;
+    color: white;
+    border: none;
+    width: 14vw;
+    .item {
+      height: 8vh;
+      width: 14vw;
+      display: flex;
+      align-items: center;
+      font-size: 17px;  
+    }
+    .item:hover {
+      background-color: #03918c;
+      color: white;
+      width: 14vw;
+    }
+
+    :global {
+      .ant-menu-item-selected {
+        background-color: #03918c !important;
+        color: white;
+      }
+      .ant-menu-item-selected::after {
+        border: none;
+      }
+    }
+   
+}
+
+
+

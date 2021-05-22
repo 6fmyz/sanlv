@@ -1,5 +1,5 @@
 module.exports = {
-  name: '教学数据管理平台',
+  name: '教学效果评价课题集成演示系统',
   prefix: 'weizhujiao-jg',
   footerText: '',//'教学数据管理平台 © 2019 武汉天天互动科技有限公司',
   logo: '/logo-base.png',

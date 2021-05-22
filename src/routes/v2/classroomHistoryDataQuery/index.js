@@ -7,14 +7,26 @@ import styles from './index.less'
 import { Table, Select, Button } from 'antd'
 import { MyPagination, MyLoading } from '../../../components/MyPlugin'
 import queryString from 'query-string'
-
+import searchIcon from '../../../images/search.svg'
 class classroomHistoryDataQuery extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dataSource: this.props.dataSource,
+      classroom: [],
+      classroomSelected: [],
+    };
+  }
   componentWillMount() {
     this.props.dispatch({ type: 'v2_classroomHistoryDataQuery/queryCampus' })
     this.initParams()
   }
 
   componentWillReceiveProps(nextProps) {
+    this.setState({
+      dataSource: nextProps.dataSource,
+      classroom: nextProps.dataSource.map((item)=>{return {'id': item.classroomId,'name': item.classroomName}})
+    })
     if (this.props.campusId !== nextProps.campusId && nextProps.campusId) {
       this.props.dispatch({
         type: 'v2_classroomHistoryDataQuery/queryTeachingBuilding',
@@ -99,16 +111,30 @@ class classroomHistoryDataQuery extends React.Component {
   }
   // 选择教室
   handleChangeClassroom = (value) => {
-    this.props.dispatch({
-      type: 'v2_classroomHistoryDataQuery/changeClassroom',
-      id: !value ? null : parseInt(value, 10)
-    })
+    // this.props.dispatch({
+    //   type: 'v2_classroomHistoryDataQuery/changeClassroom',
+    //   id: !value ? null : parseInt(value, 10)
+    // })
+    if(value){
+      this.setState({
+        classroomSelected: this.state.classroom.find(d=>d.id === value),
+      })
+    } else {
+      this.setState({
+        dataSource: this.props.dataSource,
+        classroomSelected: []
+      })
+    }
+    
   }
 
   // 查询数据
   handelQueryData = () => {
     this.handleChangePageNumber(1)
-    this.queryList(this.props)
+    // this.queryList(this.props)
+    this.setState({
+      dataSource: this.props.dataSource.filter(d=>d.classroomId === this.state.classroomSelected.id)
+    })
   }
 
 
@@ -132,15 +158,19 @@ class classroomHistoryDataQuery extends React.Component {
   }
 
   render() {
-    const { dataSource, campus, classroomBuilding, classroom,
+    const {dataSource, classroom, classroomSelected }= this.state;
+    const {  campus, classroomBuilding, 
       totalNun, page, pageSize,
       campusId,
       classroomBuildingId,
-      classroomId,
+      
     } = this.props
+    console.log(dataSource)
+    // const classroom=dataSource.map((item)=>{return {'id': item.classroomId,'name': item.classroomName}});
+    // const classroomId=dataSource.map((item)=>item.classroomId);
     const columns = [
-      { title: '校区', dataIndex: 'campusName', key: 'campusName', className: `${styles.textAlign}` },
-      { title: '教学楼', dataIndex: 'classroomBuilding', key: 'classroomBuilding', className: `${styles.textAlign}` },
+      // { title: '校区', dataIndex: 'campusName', key: 'campusName', className: `${styles.textAlign}` },
+      // { title: '教学楼', dataIndex: 'classroomBuilding', key: 'classroomBuilding', className: `${styles.textAlign}` },
       { title: '教室', dataIndex: 'classroomName', key: 'classroomName', className: `${styles.textAlign}` },
       {
         title: '上课次数',
@@ -157,12 +187,14 @@ class classroomHistoryDataQuery extends React.Component {
             <div>
               <button
                 style={{
-                  color: '#0e8ee9',
+                  color: 'white',
                   border: 'none',
-                  background: 'none',
+                  backgroundColor: '#409eff',
                   outline: 'none',
                   cursor: 'pointer',
                   padding: 0,
+                  width: '50px',
+                  height: '30px',
                 }}
                 onClick={() => {
                   // this.props.dispatch({ type: 'v2_classroomHistoryDataQuery/setTitleInfo', data: { ...record, type: 2 } })
@@ -180,34 +212,40 @@ class classroomHistoryDataQuery extends React.Component {
 
     let campusSelected
     let classroomBuildingSelected
-    let classroomSelected
-    campus.some(item => {
-      if (item.id === campusId && campusId) {
-        campusSelected = item.name
-        return true
-      }
-    })
-    classroomBuilding.some(item => {
-      if (item.id === classroomBuildingId && classroomBuildingId) {
-        classroomBuildingSelected = item.name
-        return true
-      }
-    })
+    // let classroomSelected
+    // campus.some(item => {
+    //   if (item.id === campusId && campusId) {
+    //     campusSelected = item.name
+    //     return true
+    //   }
+    // })
+    // classroomBuilding.some(item => {
+    //   if (item.id === classroomBuildingId && classroomBuildingId) {
+    //     classroomBuildingSelected = item.name
+    //     return true
+    //   }
+    // })
     
-    classroom.some(item => {
-      if (item.id === classroomId && classroomId) {
-        classroomSelected = item.name
-        return true
-      }
-    })
+    // classroom.some(item => {
+    //   if (item.id === classroomId && classroomId) {
+    //     classroomSelected = item.name
+    //     return true
+    //   }
+    // })
     return (
       <div className={styles.historyDataQueryMain}>
+        {/* <Button
+            onClick={() => {
+              this.props.history.push('/')
+            }}
+          >返回主菜单</Button> */}
         <div className={styles.topWrapper}>
+          <Button icon="left-circle" onClick={()=>this.props.history.push(`/v2-course-data-analysis/`)} />
           <div className={styles.pageTitle}>教室历史数据查询</div>
         </div>
         <div className={styles.historyDataWrapper}>
           <div className={styles.queryWrapper}>
-            <div className={styles.queryBox}>
+            {/* <div className={styles.queryBox}>
               校区：
               <Select
                 showSearch
@@ -240,7 +278,7 @@ class classroomHistoryDataQuery extends React.Component {
               >
                 {classroomBuilding.map(d => <Select.Option key={d.id} value={d.id}>{d.name}</Select.Option>)}
               </Select> 
-            </div>
+            </div> */}
             <div className={styles.queryBox}>
               教室：
               {
@@ -254,20 +292,21 @@ class classroomHistoryDataQuery extends React.Component {
                   filterOption={(input, option) =>
                     option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                   }
-                  value={classroomSelected}
+                  value={classroomSelected.name}
                 >
                   {classroom.map(d => <Select.Option key={d.id} value={d.id}>{d.name}</Select.Option>)}
+                  {/* {classroom.map((d, index) => <Select.Option key={classroomId[index]} value={classroomId[index]}>{d}</Select.Option>)} */}
                 </Select>
               }
             </div>
-            <Button onClick={this.handelQueryData}>搜索</Button>
+            <Button onClick={this.handelQueryData} style={{ height: '34px', width: '60px', background: `#00a19c url(${searchIcon}) center no-repeat`, backgroundSize: '22px' }}></Button>
           </div>
           <div className={styles.dataTable}>
             {this.props.loading && <MyLoading />}
             {
               !this.props.loading &&
                 <div>
-                  <Table bordered={true} columns={columns} pagination={false} dataSource={dataSource} />
+                  <Table bordered={true} columns={columns} pagination={false} dataSource={dataSource} className={styles.table} />
                   {/* {
                     this.props.totalNun > 0 &&
                       <MyPagination

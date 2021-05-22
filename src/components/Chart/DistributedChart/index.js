@@ -62,7 +62,7 @@ class DistributedChart extends Component {
       ],
       yAxis: [
         {
-          name: '点头频次',
+          name: '活跃指数',
           type: 'value',
           // max: 'dataMax',
           max: function (value) {
@@ -105,7 +105,7 @@ class DistributedChart extends Component {
           markLine: {
             data: [
               {
-                name: '点头频次阀值',
+                name: '活跃指数阀值',
                 yAxis: 2,
                 itemStyle: {
                   normal: {

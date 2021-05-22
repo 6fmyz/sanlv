@@ -174,11 +174,12 @@ class realTimeBoard extends React.Component {
   }
   // 选择校区
   handleChangeCampus = (value) => {
-    if (value) {
+    console.log(1111,value)
+    // if (value) {
       this.props.dispatch({ type: 'v2_realTimeBoard/changeCampus', id: !value ? null : parseInt(value, 10) })
       this.props.dispatch({ type: 'v2_realTimeBoard/changeClassroomBuilding', id: null })
       this.props.dispatch({ type: 'v2_realTimeBoard/changeClassroom', classroom: null })
-    }
+    // }
   }
   // 更换教学楼
   handleChangeClassroomBuilding = (value) => {
@@ -239,22 +240,40 @@ class realTimeBoard extends React.Component {
         {
           classroomData && classroomData.length && classroomData.map(item => {
             return (
-              <div 
-                key={item.id} 
-                className={styles.classroomItem} 
-                style={{ 
-                  background: `${item.status ? 'rgb(24, 152, 88)' : 'rgb(193, 45, 50)'}`,
-                  cursor: `${item.status ? 'pointer' : 'default'}`
-                }}
-                onClick={() => this.showClassroomSanlvDetail(item)}
-              >
-                <p>
-                  {`${item.status ? '三率监测中' : '教室不在线'}`}
-                </p>
-                <div>
-                  {`${currentCampusName}-${currentClassroomBuilding}-${item.name}`}
+               item.status && (
+                <div 
+                  key={item.id} 
+                  className={styles.classroomItem} 
+                  style={{ 
+                    background: 'rgb(24, 152, 88)',
+                    cursor: 'pointer'
+                  }}
+                  onClick={() => this.showClassroomSanlvDetail(item)}
+                >
+                  <p>三率监测中</p>
+                  <div>
+                    {`${item.campus_id}校区-${item.classroom_building_id}楼-${item.name}`}
+                  </div>
                 </div>
-              </div>
+              )
+            
+             
+              // <div 
+              //   key={item.id} 
+              //   className={styles.classroomItem} 
+              //   style={{ 
+              //     background: `${item.status ? 'rgb(24, 152, 88)' : 'rgb(193, 45, 50)'}`,
+              //     cursor: `${item.status ? 'pointer' : 'default'}`
+              //   }}
+              //   onClick={() => this.showClassroomSanlvDetail(item)}
+              // >
+              //   <p>
+              //     {`${item.status ? '三率监测中' : '教室不在线'}`}
+              //   </p>
+              //   <div>
+              //     {`${currentCampusName}-${currentClassroomBuilding}-${item.name}`}
+              //   </div>
+              // </div>
             )
           })
         }
@@ -409,13 +428,14 @@ class realTimeBoard extends React.Component {
           >
             返回
           </Button>}
-            <div className={classnames(styles.queryBox, {
+          {!activeClassroom && <Button icon="left-circle" className={styles.backbtn} onClick={()=>this.props.history.push(`/v2-course-data-analysis/`)} />}
+            {/* <div className={classnames(styles.queryBox, {
               [styles.hiddenQueryBox]: activeClassroom
             })}>
               <span className={styles.text}>校区：</span>
               <Select
                 showSearch
-                allowClear
+                // allowClear
                 value={campusId}
                 style={{ color: '#e8e8e8' }}
                 placeholder="请选择校区"
@@ -435,7 +455,7 @@ class realTimeBoard extends React.Component {
               <span className={styles.text}>教学楼：</span>
               <Select
                 showSearch
-                allowClear
+                // allowClear
                 value={classroomBuildingId}
                 style={{ color: '#e8e8e8' }}
                 placeholder="请选择教学楼"
@@ -460,16 +480,23 @@ class realTimeBoard extends React.Component {
               >
                 <Select.Option value={null}>请选择教室</Select.Option>
                 {
-                  classroomData.map(val => <Select.Option value={val.id}>{val.name}</Select.Option>)
+                  classroomData.map(val => {
+                    return (
+                      val.status && (
+                        <Select.Option value={val.id}>{val.name}</Select.Option>
+                      )
+                    )
+                  })
                 }
               </Select>
-            </div>
+            </div> */}
           </div>
           <div>实时看板</div>
         </div>
         {loading && <div className={styles.loadingWrapper}><Spin /></div>}
         {
           !activeClassroom && campusId && classroomBuildingId && classroomData && classroomData.length && this.renderClassRoomList()
+          // !activeClassroom && classroomData && classroomData.length && this.renderClassRoomList()
         }
         {
           activeClassroom && this.renderActiveClassroomSanlvData()

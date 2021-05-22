@@ -8,6 +8,7 @@ import { config, classnames, menu, getOrgIds } from '../utils'
 import lodash from 'lodash'
 import NProgress from 'nprogress'
 import NotFound from '../routes/Exception/404'
+import MainPage from  '../routes/v2/index'
 import WithoutPermission from '../components/WithoutPermission'
 import '../themes/index.less'
 import './BasicLayout.less'
@@ -40,6 +41,23 @@ class BasicLayout extends React.PureComponent {
     super(props)
     this.state = {
       isFullscreen: false,
+      currentKey: '2'
+    }
+  }
+  handleClickNavMenu = (key) => {
+    console.log(11111)
+    this.setState({
+      currentKey: key
+    })
+    switch(key){
+      case '1':
+        this.props.history.push('/')
+        break
+      case '2':
+        this.props.history.push('/v2-course-data-analysis/')
+        break
+      case '3':
+        this.props.history.push('/')
     }
   }
 
@@ -172,10 +190,10 @@ class BasicLayout extends React.PureComponent {
   getPageTitle() {
     const { location, getRouteData } = this.props
     const { pathname } = location
-    let title = '金课坊'
+    let title = '教学效果评价课题集成演示系统'
     getRouteData('BasicLayout').forEach((item) => {
       if (item.path === pathname) {
-        title = `${item.name} - 金课坊`
+        title = `${item.name} - 教学效果评价课题集成演示系统`
       }
     })
     return title
@@ -356,6 +374,8 @@ class BasicLayout extends React.PureComponent {
       role: user && user.role ? user.role : null,
       toFullScreen: this.toIndexFullScreen,
       isAllscreen,
+      currentKey: this.state.currentKey,
+      handleClickNavMenu: this.handleClickNavMenu,
     }
     return (
       <div>
@@ -383,6 +403,9 @@ class BasicLayout extends React.PureComponent {
           <div className={styles.main}>
             {
               // <LogoMotioin />
+              <Header {...headerProps}>
+                  <Bread {...breadProps} location={location} />
+                </Header>
             }
             {
               user && !isAllscreen &&
@@ -391,11 +414,12 @@ class BasicLayout extends React.PureComponent {
                 </Header>
             }
             {
+              
               <Navigation {...navigationProps} />
               // `url(${bgStar}) top center no-repeat #111`
             }
             <div
-              style={{ background: `${!isAllscreen ? '#3A3C40' : ''}`, backgroundImage: `${isAllscreen ? `url(${zipBigDataBackground})` : ''}` }}
+              // style={{ background: `${!isAllscreen ? '#3A3C40' : ''}`, backgroundImage: `${isAllscreen ? `url(${zipBigDataBackground})` : ''}` }}
               className={
                 classnames(
                   { [styles.container]: !this.props.app.collapsed && !isAllscreen },
@@ -438,12 +462,12 @@ class BasicLayout extends React.PureComponent {
                   {
                     this.getRolePermissionRoutes()
                   }
-                  <Redirect exact from="/" to="/v2-time-board" />
-                  <Route component={NotFound} />
+                  <Redirect exact from="/" to="/v2-classroom-history-data-query" />
+                  {/* <Route component={NotFound} /> */}
                 </Switch>
               </div>
             </div>
-            {!isAllscreen && <Footer />}
+            {/* {!isAllscreen && <Footer />} */}
           </div>
         </div>
       </div>
