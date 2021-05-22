@@ -168,6 +168,7 @@ class ClassroomHistoryClassroomDetail extends React.Component {
       },
       {
         title: "出勤人数",
+        className: "extendWid",
         render: (text, record) => {
           return text.attendanceCount || ''
         }

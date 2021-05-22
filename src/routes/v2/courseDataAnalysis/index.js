@@ -103,7 +103,7 @@ class courseDataAnalysis extends React.Component {
     if (!searchParams.back || notClearFilterParamsArr.indexOf(searchParams.back) === -1) {
       this.props.dispatch({ type: 'v2_courseDataAnalysis/initFilterParams' })
       this.queryList({
-        startDate: '2020-05-18', 
+        startDate: '2010-05-18', 
         endDate: '2021-05-18', 
         pageNum: 1,
         pageSize: 5,
@@ -376,7 +376,7 @@ class courseDataAnalysis extends React.Component {
         title: '时间段',
         dataIndex: 'time',
         key: 'time',
-        className: `${styles.textAlign}`,
+        className: `${styles.textAlignTime}`,
       },
       {
         title: '操作',
@@ -413,8 +413,8 @@ class courseDataAnalysis extends React.Component {
         <div className={styles.pageTop}>
           {/* <SelectCollege {...selectCollege} /> */}
           <div className={styles.pageTitle}>课堂数据分析</div>
-          <Button onClick={()=>this.props.history.push(`/v2-time-board`)} style={{position: 'absolute', right: '2vw', top: '1vh'}}>直播</Button>
-          <Button onClick={()=>this.props.history.push(`/v2-classroom-history-data-query`)} style={{position: 'absolute', right: '8vw', top: '1vh'}}>所有教室</Button>
+          <Button onClick={()=>this.props.history.push(`/v2-time-board`)} style={{position: 'absolute',  right: '2vw', top: '0'}}>直播</Button>
+          <Button onClick={()=>this.props.history.push(`/v2-classroom-history-data-query`)} style={{position: 'absolute', right: '8vw',top: '0'}}>所有教室</Button>
         </div>
         <div className={styles.contentWrapper}>
           <div className={styles.topWrapper}>

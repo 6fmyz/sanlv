@@ -306,7 +306,7 @@ class AttentionChart extends Component {
     const sliderStickLeft = `${date.length ? `${100 * sliderValue / (date.length - 1)}` : 0}%`
     return (
       <React.Fragment>
-        <div id="linesChart" style={isEmpty(lookUpMark) ? style : { width: '100%', height: 285, padding: '20px 20px 0 20px'}}>
+        <div id="linesChart" style={isEmpty(lookUpMark) ? style : { width: '100%', padding: '20px 20px 0 20px'}}>
           <ReactEcharts
             option={this.getOption(this.props)}
             onEvents={onEvents}
@@ -342,7 +342,7 @@ class AttentionChart extends Component {
                 left: `calc(${sliderStickLeft} - 12px)`
               }}
             >
-              <img src={sliderStick} alt="" height={200} />
+              <img src={sliderStick} alt="" height={160} />
             </div>
           </div>
         </div>

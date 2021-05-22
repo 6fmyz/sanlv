@@ -17,7 +17,7 @@ export default {
     tableDate: [],
     totalDataNum: 0,
     loading: false,
-    startDate: '2020-05-18', 
+    startDate: '2010-05-18', 
     endDate: '2021-05-18', 
     pageNum: 1,
     pageSize: 5,
@@ -166,7 +166,7 @@ export default {
         pageNum: 1, 
         rate: ['attendanceRate', 'lookupRate', 'nodRate'],
         fstOrgId: null,
-        startDate: '2020-05-18', 
+        startDate: '2010-05-18', 
         endDate: '2021-05-18', 
         pageSize: 5,
       }
