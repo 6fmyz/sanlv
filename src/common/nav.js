@@ -48,7 +48,16 @@ export const getNavData = app => [
         name: '课堂数据分析',
         path: '/v2-course-data-analysis',
         component: dynamicWrapper(app, ['v2_courseDataAnalysis'], () => import('../routes/v2/courseDataAnalysis')),
+      },{
+        name: '认知负荷检测',
+        path: '/cognition',
+        component: dynamicWrapper(app, [], () => import('../routes/v2/ItemThreePage')),
+      },{
+        name: '教学环境评测',
+        path: '/teachingEnv',
+        component: dynamicWrapper(app, [], () => import('../routes/v2/ItemFourPage')),
       }
+
     ],
   },
   {

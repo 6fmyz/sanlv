@@ -9,6 +9,8 @@ import lodash from 'lodash'
 import NProgress from 'nprogress'
 import NotFound from '../routes/Exception/404'
 import MainPage from  '../routes/v2/index'
+import ItemOne from '../routes/v2/ItemOnePage/index'
+import ItemThree from '../routes/v2/ItemThreePage/index'
 import WithoutPermission from '../components/WithoutPermission'
 import '../themes/index.less'
 import './BasicLayout.less'
@@ -41,7 +43,7 @@ class BasicLayout extends React.PureComponent {
     super(props)
     this.state = {
       isFullscreen: false,
-      currentKey: '2'
+      currentKey: '/'
     }
   }
   handleClickNavMenu = (key) => {
@@ -49,16 +51,17 @@ class BasicLayout extends React.PureComponent {
     this.setState({
       currentKey: key
     })
-    switch(key){
-      case '1':
-        this.props.history.push('/')
-        break
-      case '2':
-        this.props.history.push('/v2-course-data-analysis/')
-        break
-      case '3':
-        this.props.history.push('/')
-    }
+    this.props.history.push(key)
+    // switch(key){
+    //   case '1':
+    //     this.props.history.push('/')
+    //     break
+    //   case '2':
+    //     this.props.history.push('/v2-course-data-analysis/')
+    //     break
+    //   case '3':
+    //     this.props.history.push('/cognition')
+    // }
   }
 
   // 判断当前路由是否允许开启全屏预览
@@ -204,6 +207,7 @@ class BasicLayout extends React.PureComponent {
     const { getRouteData, app } = this.props
     const resultRoutes = []
     const nodeList = getRouteData('BasicLayout')
+    console.log(nodeList)
     nodeList.forEach(item => {
       const rules = app.user ? app.user.role.rules : []
       const currentModules = menus.filter(menuItem => { // 当前路由对应的权限配置中的模块id，存在则检查模块的查看权限
@@ -309,6 +313,7 @@ class BasicLayout extends React.PureComponent {
 
   render() {
     const { getRouteData, location, dispatch, app } = this.props
+    console.log(location)
     const { user, siderFold, darkTheme, isNavbar, menuPopoverVisible, navOpenKeys } = app
     const {
       isFullscreen
@@ -376,6 +381,7 @@ class BasicLayout extends React.PureComponent {
       isAllscreen,
       currentKey: this.state.currentKey,
       handleClickNavMenu: this.handleClickNavMenu,
+      path: location.pathname,
     }
     return (
       <div>
@@ -462,8 +468,9 @@ class BasicLayout extends React.PureComponent {
                   {
                     this.getRolePermissionRoutes()
                   }
-                  <Redirect exact from="/" to="/v2-course-data-analysis/" />
-                  {/* <Route component={NotFound} /> */}
+                  {/* <Redirect exact from="/" to="/v2-course-data-analysis/" /> */}
+                  {/* <Route  component={ItemThree} /> */}
+                  <Route component={ItemOne}></Route>
                 </Switch>
               </div>
             </div>
