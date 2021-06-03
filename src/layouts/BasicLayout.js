@@ -43,14 +43,14 @@ class BasicLayout extends React.PureComponent {
     super(props)
     this.state = {
       isFullscreen: false,
-      currentKey: '/'
+      // currentKey: '/'
     }
   }
   handleClickNavMenu = (key) => {
     console.log(11111)
-    this.setState({
-      currentKey: key
-    })
+    // this.setState({
+    //   currentKey: key
+    // })
     this.props.history.push(key)
     // switch(key){
     //   case '1':
@@ -379,7 +379,7 @@ class BasicLayout extends React.PureComponent {
       role: user && user.role ? user.role : null,
       toFullScreen: this.toIndexFullScreen,
       isAllscreen,
-      currentKey: this.state.currentKey,
+      // currentKey: this.state.currentKey,
       handleClickNavMenu: this.handleClickNavMenu,
       path: location.pathname,
     }

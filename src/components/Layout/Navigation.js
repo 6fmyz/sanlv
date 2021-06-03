@@ -30,7 +30,6 @@ class Navigation extends React.Component {
       role,
       toFullScreen,
       isAllscreen,
-      currentKey,
       handleClickNavMenu,
       path,
     } = this.props
@@ -55,7 +54,7 @@ class Navigation extends React.Component {
     return (
       <div id="navigation" className={clsx(styles.navigation, isAllscreen && styles.noHeaderstyle)}>
         {
-          <Menus currentKey={currentKey} handleClickNavMenu={handleClickNavMenu} path={path}/>
+          <Menus handleClickNavMenu={handleClickNavMenu} path={path}/>
         }
         {/* {
           <Button style={collapsed ? cssStyle.narrow : cssStyle.width} onClick={toggleCollapsed} >
@@ -84,7 +83,6 @@ Navigation.propTypes = {
   role: PropTypes.number,
   toFullScreen: PropTypes.func,
   isAllscreen: PropTypes.bool,
-  currentKey: PropTypes.string,
   handleClickNavMenu: PropTypes.func,
   path: PropTypes.string,
 }

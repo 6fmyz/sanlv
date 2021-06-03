@@ -339,7 +339,7 @@ class AttentionChart extends Component {
             <div
               className={styles.sliderLines}
               style={{
-                left: `calc(${sliderStickLeft} - 12px)`
+                left: `calc(${sliderStickLeft} - 5px)`
               }}
             >
               <img src={sliderStick} alt="" height={160} />

@@ -2,7 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import echarts from 'echarts';
 import { Menu, Table } from 'antd';
+import { AttentionChart, DistributedChart } from "../../../components/Chart";
+import {
+  Slider,
+} from 'antd'
+import RectangleInImg from "../../../components/RectangleInImg";
 import styles from './index.less';
+import img1 from '../../../images/uphead0.jpg';
+
+import sliderStick from '../../../components/Chart/AttentionChart/images/slider_stick.png'
+import sliderBlock from '../../../components/Chart/AttentionChart/images/slider_block.png'
+
+const video = [...Array(31)].map((v,k) => k)
+const videoArray = video.map((item) => require("../../../images/attention/uphead"+ item + ".jpg"));
 
 const dataSource={
   xAxis: [
@@ -19,12 +31,103 @@ const dataSource={
 
 };
 
+const attentionData = {
+  time: ["16:38","16:39","16:40","16:41","16:42","16:43","16:44","16:45","16:46","16:47","16:48","16:49","16:50","16:51","16:52","16:53","16:54","16:55","16:56","16:57","16:58","16:59","17:00","17:01","17:02","17:03","17:04","17:05","17:06","17:07","17:08"],
+  attention: [
+    [0,0,0,0.14,0,0,0,0.26,0.1,0.24,0.29,0.08,0.22,0.24,0.05,0.35,0.71,0.3,0.08,0.14,0.14,0.25,0.49,0.36,1.35,2.29,1.11,0.32,0.51,0,0.31],
+    [0.46,0.44,0.08,0.07,0.34,0,0,0.26,0,0.61,0,0,0.05,0,0.29,0.48,0.05,0.45,0.04,0,0,0.03,0,0.18,0,0.15,0.13,0,0.15,0.03,0.04],
+    [2.1,0.68,0.83,2.32,0.87,0.25,0.86,0.74,1.76,1.6,0.64,1.97,1.11,0.9,1.68,1.29,1.16,1.95,1.03,0.57,2.67,1.36,0,0,0.07,0,1.52,0.51,0.77,1.73,1.09],
+  ],
+}
+
 class ItemThree extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      index: 0
+      index: 4,
+      sliderValue: 0,
     }
+  }
+
+  initAttentionEchart=({id, index})=> {
+    var attentionEchart = echarts.init(document.getElementById(id));
+    var attentionOption = {
+      tooltip: {
+        trigger: 'axis'
+      },
+      legend: {
+        // orient: 'vertical',
+        data: ['学生1','学生2','学生3'],
+      //   top: 5,
+      //  left: 'center',
+      //   borderWidth: 1,
+      //   borderColor: 'black',
+      },
+      xAxis: {
+        name: '时刻',
+        nameLocation: 'center',
+        nameTextStyle: {
+          lineHeight: 40,
+        },
+        // axisLine: {
+        //   lineStyle: {
+        //     color: '#ccc'
+        //   }
+        // },
+        // axisTick: {
+        //   show: true,
+        //   lineStyle: {
+        //     color: '#8E8E8F',
+        //     type: 'solid'
+        //   }
+        // },
+        type: 'category',
+        // boundaryGap: false,
+        data: attentionData.time//[...Array(31)].map((v,k) => k+1),
+      },
+      yAxis: [
+        {
+          name:'注意力',
+          // nameLocation: 'center',
+          max: 3,
+          min: 0,
+          interval: 0.5,
+          // nameTextStyle: {
+          //   fontSize: 16,
+          //   lineHeight: 40,
+          // },
+        },
+      ],
+      series: [
+        {
+          name: '学生1',
+          type: 'line',
+          showSymbol: false,
+          data: attentionData.attention[0],
+        },
+        {
+          name: '学生2',
+          type: 'line',
+          showSymbol: false,
+          data: attentionData.attention[1],
+        },
+        {
+          name: '学生3',
+          type: 'line',
+          showSymbol: false,
+          data: attentionData.attention[2],
+        }
+      ],
+      color: ["#4a7ebb", "#be4b48", "#98b954",]
+      
+    };
+    attentionEchart.setOption(attentionOption);
+  }
+
+  handleChangeSliderValue = (value) => {
+    this.setState({
+      sliderValue: value,
+    })
   }
 
   initEcharts=({id,index})=> {
@@ -152,8 +255,18 @@ class ItemThree extends React.Component {
   }
 
   componentDidMount () {
-    this.initEcharts({id:'itemOne',index: 0});
-    this.initEcharts({id:'itemTwo',index: 1});
+    console.log('render~')
+    if(this.state.index < 2 ) {
+      this.initEcharts({id:'itemOne',index: 0});
+      this.initEcharts({id:'itemTwo',index: 1});
+    } else {
+      this.initAttentionEchart({id:'attention',index: 4});
+      // var canvas = document.getElementById("ex1");
+      // var ctx = canvas.getContext("2d");
+      
+      // ctx.strokeRect(0,0,100,100)
+    }
+    
   }
 
   componentDidUpdate () {
@@ -165,6 +278,8 @@ class ItemThree extends React.Component {
       // echarts.init(document.getElementById('itemOne')).dispose();
       // echarts.init(document.getElementById('itemTwo')).dispose();
       this.initEcharts({id:'itemThree',index: 2})
+    }else if (index === 4) {
+      this.initAttentionEchart({id:'attention',index: 4});
     }
   }
 
@@ -175,7 +290,8 @@ class ItemThree extends React.Component {
   }
 
   render () {
-    const {index} = this.state;
+    const {index, sliderValue} = this.state;
+    const sliderStickLeft = `${attentionData.time.length ? `${100 * sliderValue / (attentionData.time.length - 1)}` : 0}%`
     return (
       <div className={styles.box}>
         <Menu className={styles.subjectMenu} onClick={this.handleClickIndex} selectedKeys={[index.toString()]} mode="horizontal">
@@ -184,6 +300,9 @@ class ItemThree extends React.Component {
           </Menu.Item>
           <Menu.Item key="3">
             知识基础与认知负荷
+          </Menu.Item>
+          <Menu.Item key="4">
+            注意力视频
           </Menu.Item>
         </Menu>
         {(index <2) && (
@@ -255,6 +374,68 @@ class ItemThree extends React.Component {
               </div>
             </div>
             
+          </div>
+        )}
+        {index === 4 && (
+          <div className={styles.container}>
+            <div
+              // className={styles.left}
+              // style={{ width: "60vw", position: "relative" }}
+              style={{ width: "60vw", position:"relative", padding:"10px"}}
+            >
+              {/* <div style={{ width: "100%", position: 'relative'}}>  */}
+                <RectangleInImg
+                  url={videoArray[sliderValue]}
+                  imgMode={2}
+                 
+                />
+                {/* <canvas id="ex1" style={{position: 'absolute', top: '0',left: '0', width: '100%', height: '100%'}}>
+
+                </canvas> */}
+                <div style={{border: '2px solid #4a7ebb', position:'absolute', top:'34%',left: '24%',width: '60px', height: '60px'}}></div>
+                <div style={{border: '2px solid #be4b48', position:'absolute', top:'32%',right: '18%',width: '60px', height: '60px'}}></div>
+                <div style={{border: '2px solid #98b954', position:'absolute', top:'36%',right: '35%',width: '60px', height: '60px'}}></div>
+              {/* </div> */}
+              
+            </div>
+            <div className={styles.right}>
+              <div id="attention" style={{width: '25vw', height:'50vh'}}></div>
+              <div className={styles.sliderWrapper}>
+                <Slider
+                  value={sliderValue}
+                  onChange={(value) => {
+                    this.handleChangeSliderValue(value)
+                  }}
+                  min={0}
+                  max={attentionData.time.length - 1 }
+                  tipFormatter={(value) => {
+                    if (attentionData.time.length) {
+                      return attentionData.time[value]
+                    }
+                    return value
+                  }}
+                  handleStyle={{
+                    height: '48px',
+                    width: '48px',
+                    border: 'none',
+                    backgroundColor: 'transparent',
+                    backgroundImage: `url(${sliderBlock})`,
+                    backgroundSize:'cover',
+                    top: '-10px'
+                  }}
+                />
+                <div
+                  className={styles.sliderLines}
+                  style={{
+                    left: `calc(${sliderStickLeft} - 5px)`
+                  }}
+                >
+                  <img src={sliderStick} alt="" height={160} />
+                </div>
+              </div>
+
+            </div>
+
           </div>
         )}
       </div>
