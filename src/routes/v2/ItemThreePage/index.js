@@ -392,9 +392,9 @@ class ItemThree extends React.Component {
                 {/* <canvas id="ex1" style={{position: 'absolute', top: '0',left: '0', width: '100%', height: '100%'}}>
 
                 </canvas> */}
-                <div style={{border: '2px solid #4a7ebb', position:'absolute', top:'34%',left: '24%',width: '60px', height: '60px'}}></div>
-                <div style={{border: '2px solid #be4b48', position:'absolute', top:'32%',right: '18%',width: '60px', height: '60px'}}></div>
-                <div style={{border: '2px solid #98b954', position:'absolute', top:'36%',right: '35%',width: '60px', height: '60px'}}></div>
+                <div style={{border: '2px solid #4a7ebb', position:'absolute', top:`calc(42% - 2vw)`,left: `calc(28% - 2vw)`,width: '4vw', height: '4vw'}}></div>
+                <div style={{border: '2px solid #be4b48', position:'absolute', top:`calc(39% - 2vw)`,right: `calc(23% - 2vw)`,width: '4vw', height: '4vw'}}></div>
+                <div style={{border: '2px solid #98b954', position:'absolute', top:`calc(44% - 2vw)`,right: `calc(39% - 2vw)`,width: '4vw', height: '4vw'}}></div>
               {/* </div> */}
               
             </div>
