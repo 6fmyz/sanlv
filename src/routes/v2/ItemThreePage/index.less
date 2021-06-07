@@ -4,6 +4,7 @@
     left: 0;
     width: 100%;
     height: 100%;
+    overflow: scroll;
     background-color: white;
 
     .content1 {
@@ -11,6 +12,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 0 50px 0 50px ;
     }
     .content2 {
         width: 30vw;
@@ -22,14 +24,17 @@
     }
 
     .summary {
-        font-size: 16px;
-        margin: 0 10px 0 10px ;
+        font-size: 20px;
+       
         div {
             font-size: 32px;
             color: #05a7a3;    
         }
         h1 {
             color: #05a7a3;           
+        }
+        p {
+            line-height: 1.5;
         }
     }
 
@@ -55,7 +60,9 @@
         
     }
     table {
-        width: 600px;
+        width: 48vw;
+        height: 40vh;
+        font-size: 18px;
         table-layout: fixed; 
         word-wrap: break-word;
         tr:nth-child(odd) {

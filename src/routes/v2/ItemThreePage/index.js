@@ -44,7 +44,7 @@ class ItemThree extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      index: 4,
+      index: 0,
       sliderValue: 0,
     }
   }
@@ -314,10 +314,10 @@ class ItemThree extends React.Component {
             </div>
             <div className={styles.content1}>
               <div className={styles.summary}>
-                <div>结论：</div>
-                <span>学生专注度与认知负荷呈现规律大致相同。同注意力分散的学生相比，注意力集中、专注度更高的学生认知负荷更高。</span>
-                <div>解释：</div>
-                <span>积极参与、专注度更高的学生有更多的认知资源用到与学习有直接相关的加工比如图式构建中去,让学习者在工作记忆中的元素活动中加入更高级的有意识的认知加工，从而有更高的认知负荷。</span>
+                <h1>结论：</h1>
+                <p>学生专注度与认知负荷呈现规律大致相同。同注意力分散的学生相比，注意力集中、专注度更高的学生认知负荷更高。</p>
+                <h1>解释：</h1>
+                <p>积极参与、专注度更高的学生有更多的认知资源用到与学习有直接相关的加工比如图式构建中去,让学习者在工作记忆中的元素活动中加入更高级的有意识的认知加工，从而有更高的认知负荷。</p>
               </div>
             </div>
            
@@ -380,18 +380,13 @@ class ItemThree extends React.Component {
           <div className={styles.container}>
             <div
               // className={styles.left}
-              // style={{ width: "60vw", position: "relative" }}
               style={{ width: "60vw", position:"relative", padding:"10px"}}
             >
-              {/* <div style={{ width: "100%", position: 'relative'}}>  */}
                 <RectangleInImg
                   url={videoArray[sliderValue]}
                   imgMode={2}
                  
                 />
-                {/* <canvas id="ex1" style={{position: 'absolute', top: '0',left: '0', width: '100%', height: '100%'}}>
-
-                </canvas> */}
                 <div style={{border: '2px solid #4a7ebb', position:'absolute', top:`calc(42% - 2vw)`,left: `calc(28% - 2vw)`,width: '4vw', height: '4vw'}}></div>
                 <div style={{border: '2px solid #be4b48', position:'absolute', top:`calc(39% - 2vw)`,right: `calc(23% - 2vw)`,width: '4vw', height: '4vw'}}></div>
                 <div style={{border: '2px solid #98b954', position:'absolute', top:`calc(44% - 2vw)`,right: `calc(39% - 2vw)`,width: '4vw', height: '4vw'}}></div>

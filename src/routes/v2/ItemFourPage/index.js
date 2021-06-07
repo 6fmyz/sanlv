@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import echarts from 'echarts';
 import { Menu, Table } from 'antd';
-import sanlv from '../../../images/sanlv.png';
+// import sanlv from '../../../images/sanlv.png';
 import styles from './index.less';
 
 class ItemFour extends React.Component {
@@ -36,7 +36,7 @@ class ItemFour extends React.Component {
         </Menu>
         {index ===0 && (
           <div className={styles.totalComment}>
-            <img src={sanlv} align="right" ></img>
+            {/* <img src={sanlv} align="right" ></img> */}
             <span>&nbsp;&nbsp;&nbsp;&nbsp;针对仙桃实验小学，通过实地调研、调查问卷、访谈交流等多种方法采集数据，以生态学的视角从物理空间、资源空间和社交空间来展开评价分析，其总体评价如下：</span>
             <ol>
               <li>经过对物理空间、资源空间以及社交空间各项指标的综合分析和评价，仙桃实验小学教学环境总体评分为43.66分（百分制），处于较低水平，虽然在湖北省县市级学校类别中属于中等偏上水平，但其“智慧性”程度偏低，具有很大的提升空间。</li>
