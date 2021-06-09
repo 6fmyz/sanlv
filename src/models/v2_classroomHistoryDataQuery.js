@@ -47,7 +47,6 @@ export default {
     // 查询列表数据
     * queryClassroomList(action, { call, put }) {
       const res = yield call(queryClassroomList, parse(action.params))
-      console.log(222, res.data)
       let data = res.data.map(item=>{
         if(!item.classroomName.includes('教室')){
           return {...item, classroomName: item.classroomName+'教室'}

@@ -56,6 +56,10 @@ export const getNavData = app => [
         name: '教学环境评测',
         path: '/teachingEnv',
         component: dynamicWrapper(app, [], () => import('../routes/v2/ItemFourPage')),
+      },{
+        name: '学习过程评价',
+        path: '/studyProcess',
+        component: dynamicWrapper(app, [], () => import('../routes/v2/ItemFivePage')),
       }
 
     ],

@@ -174,7 +174,6 @@ class realTimeBoard extends React.Component {
   }
   // 选择校区
   handleChangeCampus = (value) => {
-    console.log(1111,value)
     // if (value) {
       this.props.dispatch({ type: 'v2_realTimeBoard/changeCampus', id: !value ? null : parseInt(value, 10) })
       this.props.dispatch({ type: 'v2_realTimeBoard/changeClassroomBuilding', id: null })

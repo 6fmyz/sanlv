@@ -47,7 +47,6 @@ class BasicLayout extends React.PureComponent {
     }
   }
   handleClickNavMenu = (key) => {
-    console.log(11111)
     // this.setState({
     //   currentKey: key
     // })
@@ -207,7 +206,6 @@ class BasicLayout extends React.PureComponent {
     const { getRouteData, app } = this.props
     const resultRoutes = []
     const nodeList = getRouteData('BasicLayout')
-    console.log(nodeList)
     nodeList.forEach(item => {
       const rules = app.user ? app.user.role.rules : []
       const currentModules = menus.filter(menuItem => { // 当前路由对应的权限配置中的模块id，存在则检查模块的查看权限
@@ -313,7 +311,6 @@ class BasicLayout extends React.PureComponent {
 
   render() {
     const { getRouteData, location, dispatch, app } = this.props
-    console.log(location)
     const { user, siderFold, darkTheme, isNavbar, menuPopoverVisible, navOpenKeys } = app
     const {
       isFullscreen

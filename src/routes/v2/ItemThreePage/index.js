@@ -8,7 +8,6 @@ import {
 } from 'antd'
 import RectangleInImg from "../../../components/RectangleInImg";
 import styles from './index.less';
-import img1 from '../../../images/uphead0.jpg';
 
 import sliderStick from '../../../components/Chart/AttentionChart/images/slider_stick.png'
 import sliderBlock from '../../../components/Chart/AttentionChart/images/slider_block.png'
@@ -173,10 +172,10 @@ class ItemThree extends React.Component {
         type: 'category',
         boundaryGap: false,
         axisTick: {
-          interval: (index, value) => { if ((index+1)%2 === 0){console.log(index,value); return true}}
+          interval: (index, value) => { if ((index+1)%2 === 0){ return true}}
         },
         axisLabel: {
-          interval: (index, value) => { if ((index+1)%4 === 0){console.log(index,value); return true}}
+          interval: (index, value) => { if ((index+1)%4 === 0){ return true}}
         },
         data: index=== 0 ? [...Array(64)].map((v,k) => k+1) : [...Array(57)].map((v,k) => k+1),
       },
@@ -255,7 +254,6 @@ class ItemThree extends React.Component {
   }
 
   componentDidMount () {
-    console.log('render~')
     if(this.state.index < 2 ) {
       this.initEcharts({id:'itemOne',index: 0});
       this.initEcharts({id:'itemTwo',index: 1});
@@ -266,7 +264,6 @@ class ItemThree extends React.Component {
       
       // ctx.strokeRect(0,0,100,100)
     }
-    
   }
 
   componentDidUpdate () {

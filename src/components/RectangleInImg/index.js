@@ -26,7 +26,6 @@ class RectangleInImg extends PureComponent {
 
   drawRectangleInImg = (src, rectangleCoordArr=[], mode) => {
     const canvasWidth = this.canvasWrapRef.clientWidth
-    console.log(this.canvasWrapRef,canvasWidth,'notie')
     let canvasHeight = this.canvasWrapRef.clientHeight
     const img = new Image()
     img.src = src

@@ -165,7 +165,6 @@ class classroomHistoryDataQuery extends React.Component {
       classroomBuildingId,
       
     } = this.props
-    console.log(dataSource)
     // const classroom=dataSource.map((item)=>{return {'id': item.classroomId,'name': item.classroomName}});
     // const classroomId=dataSource.map((item)=>item.classroomId);
     const columns = [

@@ -26,6 +26,8 @@ class  Menus extends React.Component {
         <Menu.Item className={styles.item} key="/v2-course-data-analysis/">教学效能评价</Menu.Item>
         <Menu.Item className={styles.item} key='/cognition'>认知负荷检测</Menu.Item>
         <Menu.Item className={styles.item} key='/teachingEnv'>教学环境评测</Menu.Item>
+        <Menu.Item className={styles.item} key='/studyProcess'>学习过程评价</Menu.Item>
+        
       </Menu>
     )
   }
