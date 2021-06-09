@@ -154,7 +154,7 @@ class ItemOne extends React.Component {
               
             </div>
             <div className={styles.content1}>
-              <div className={styles.myhref} style={{textAlign: 'left',marginLeft: '5vw'}}><a href="http://study.hub.nercel.com/#/home" target="_blank">学习者学科能力测评系统</a></div>
+              <div className={styles.myhref}><a href="http://study.hub.nercel.com/#/home" target="_blank">学习者学科能力测评系统</a></div>
               <div className={styles.summary}>
                 <h1>结论：</h1>
                 <p>数学评价：405班在数学的整体指标优于403班；</p>
@@ -168,7 +168,7 @@ class ItemOne extends React.Component {
             <div style={{display:'flex', margin: '20px'}}>
             <div id="itemThree" style={{width: '40vw', height:'60vh'}}></div>
             <div className={styles.content2}>
-              <div className={styles.myhref} style={{textAlign: 'left',marginLeft: '5vw'}}><a href="http://202.114.40.160:8080/CAWS_war/user_login.action" target="_blank">汉语在线写作测评系统</a></div>
+              <div className={styles.myhref}><a href="http://202.114.40.160:8080/CAWS_war/user_login.action" target="_blank">汉语在线写作测评系统</a></div>
               <div className={styles.summary}>
               <h1>结论：</h1>
               <p>403班字词基础指标突出，优于基准；文章结构与情感主题均低于基准但优于405班，语言表达指标稍低于405班。
