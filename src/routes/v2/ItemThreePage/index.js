@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import echarts from 'echarts';
 import { Menu, Table } from 'antd';
 import { AttentionChart, DistributedChart } from "../../../components/Chart";
+// import {  bind} from 'size-sensor'
 import {
   Slider,
 } from 'antd'
@@ -121,6 +122,13 @@ class ItemThree extends React.Component {
       
     };
     attentionEchart.setOption(attentionOption);
+    window.addEventListener('resize', () => {
+      attentionEchart.resize();
+    })
+    // bind(document.getElementById(id), () => {
+    //   attentionEchart.resize();
+    // })
+    
   }
 
   handleChangeSliderValue = (value) => {
@@ -251,6 +259,13 @@ class ItemThree extends React.Component {
       // color: ["#515151","#0000ff"]
     };
       myChart.setOption(option);
+      window.addEventListener('resize', () => {
+        myChart.resize();
+      })
+    // bind(document.getElementById(id), () => {元素本身没有.onreesize函数，bind给它加上了
+    //   console.log(id, myChart)
+    //   myChart.resize();
+    // })
   }
 
   componentDidMount () {

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
-class RectangleInImg extends PureComponent {
+class RectangleInImg extends PureComponent {  
   static propTypes = {
     imgMode: PropTypes.number, // 1 固定图片宽高 2 固定图片宽，高auto
     url: PropTypes.string,
@@ -15,6 +15,11 @@ class RectangleInImg extends PureComponent {
   componentDidMount() {
     const { url, rectArr, imgMode } = this.props
     this.drawRectangleInImg(url, rectArr, imgMode)
+    window.addEventListener("resize", () => {
+      this.drawRectangleInImg(url, rectArr,imgMode)
+      // this.canvasRef.width = this.canvasWrapRef.clientWidth
+      // this.canvasRef.height = this.canvasWrapRef.clientHeight
+    })
   }
 
   componentWillReceiveProps(nextProps){
@@ -70,7 +75,7 @@ class RectangleInImg extends PureComponent {
   render() {
     return (
       <div style={{ width: '100%', height: '100%' }} ref={(node) => (this.canvasWrapRef = node)}>
-        <canvas ref={(node) => (this.canvasRef = node)} />
+        <canvas ref={(node) => (this.canvasRef = node)} /> 
       </div>
     )
   }

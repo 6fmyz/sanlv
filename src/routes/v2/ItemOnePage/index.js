@@ -102,7 +102,10 @@ class ItemOne extends React.Component {
       ],
       color: ["#5b9bd5", "#ed7d31", "#a5a5a5"]
     };
-      myChart.setOption(option);
+    myChart.setOption(option);
+    window.addEventListener('resize', () => {
+      myChart.resize();
+    })
   }
 
   componentDidMount () {
@@ -149,8 +152,8 @@ class ItemOne extends React.Component {
         {(index <2) && (
           <div>
             <div style={{display:'flex', justifyContent: 'space-around'}}>
-              <div id="itemOne" style={{width: '40vw', height:'60vh'}}></div>
-              <div id="itemTwo" style={{width: '40vw', height:'60vh'}}></div>
+              <div id="itemOne" style={{width: '40%', height:'60vh'}}></div>
+              <div id="itemTwo" style={{width: '40%', height:'60vh'}}></div>
               
             </div>
             <div className={styles.content1}>
