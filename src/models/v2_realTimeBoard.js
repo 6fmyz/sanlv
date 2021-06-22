@@ -250,6 +250,7 @@ export default {
           errorMsg: '',
           bbox: data.bbox
         }
+        // console.log(base64Url)
       }
       return result
     },

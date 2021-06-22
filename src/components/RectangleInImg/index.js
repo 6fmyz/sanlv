@@ -15,11 +15,11 @@ class RectangleInImg extends PureComponent {
   componentDidMount() {
     const { url, rectArr, imgMode } = this.props
     this.drawRectangleInImg(url, rectArr, imgMode)
-    window.addEventListener("resize", () => {
-      this.drawRectangleInImg(url, rectArr,imgMode)
-      // this.canvasRef.width = this.canvasWrapRef.clientWidth
-      // this.canvasRef.height = this.canvasWrapRef.clientHeight
-    })
+    // window.addEventListener("resize", () => {
+    //   this.drawRectangleInImg(url, rectArr,imgMode)
+    //   // this.canvasRef.width = this.canvasWrapRef.clientWidth
+    //   // this.canvasRef.height = this.canvasWrapRef.clientHeight
+    // })
   }
 
   componentWillReceiveProps(nextProps){
