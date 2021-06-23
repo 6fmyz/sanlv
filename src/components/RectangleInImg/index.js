@@ -13,17 +13,16 @@ class RectangleInImg extends PureComponent {
   }
 
   componentDidMount() {
-    console.log('mout')
     const { url, rectArr, imgMode } = this.props
     this.drawRectangleInImg(url, rectArr, imgMode)
-    window.addEventListener("resize", () => {
-      console.log('resize')
-      // this.drawRectangleInImg(this.props.url, rectArr,imgMode)
-    })
+    // window.addEventListener("resize", () => {
+    //   this.drawRectangleInImg(url, rectArr,imgMode)
+    //   // this.canvasRef.width = this.canvasWrapRef.clientWidth
+    //   // this.canvasRef.height = this.canvasWrapRef.clientHeight
+    // })
   }
 
   componentWillReceiveProps(nextProps){
-    console.log('update')
     if(nextProps.url !== this.props.url){
       const { url,rectArr,imgMode }  = nextProps
       this.drawRectangleInImg(url, rectArr,imgMode)
@@ -31,7 +30,7 @@ class RectangleInImg extends PureComponent {
   }
 
   drawRectangleInImg = (src, rectangleCoordArr=[], mode) => {
-    let canvasWidth = this.canvasWrapRef.clientWidth
+    const canvasWidth = this.canvasWrapRef.clientWidth
     let canvasHeight = this.canvasWrapRef.clientHeight
     const img = new Image()
     img.src = src
