@@ -413,7 +413,7 @@ class courseDataAnalysis extends React.Component {
         <div className={styles.pageTop}>
           {/* <SelectCollege {...selectCollege} /> */}
           <div className={styles.pageTitle}>课堂数据分析</div>
-          {/* <Button onClick={()=>this.props.history.push(`/v2-time-board`)} style={{position: 'absolute',  right: '2vw', top: '0'}}>直播</Button> */}
+          <Button onClick={()=>this.props.history.push(`/v2-time-board`)} style={{position: 'absolute',  right: '2vw', top: '0'}}>直播</Button>
           <Button onClick={()=>this.props.history.push(`/v2-classroom-history-data-query`)} style={{position: 'absolute', right: '8vw',top: '0'}}>所有教室</Button>
         </div>
         <div className={styles.contentWrapper}>
